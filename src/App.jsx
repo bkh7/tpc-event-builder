@@ -97,7 +97,7 @@ export default function App(){
   const [bartenders, setBartenders] = useState(0);
 
   const [bizRoom, setBizRoom] = useState(0);
-  const [roomAmenitiesEstimate, setRoomAmenitiesEstimate] = useState(0);
+  const [roomAmenitiesEstimate, setRoomAmenitiesEstimate] = useState(''); // initialize as string
 
   const cap = room === 'full' ? 800 : 275;
 
@@ -133,10 +133,13 @@ export default function App(){
 
   const total = roomRental + foodSubtotal + service + foodTax + (barMode==='hosted' ? barBase + barTax : cashFees) + roomAmenitiesSubtotal + (minShort||0);
 
-  function handleEstimateChange(e) {
+  const handleEstimateChange = (e) => {
+    // Only allow numbers or empty string
     const value = e.target.value;
-    setRoomAmenitiesEstimate(value);
-  }
+    if (value === '' || /^\d+$/.test(value)) {
+      setRoomAmenitiesEstimate(value);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-white text-gray-900">
@@ -178,7 +181,9 @@ export default function App(){
                 </select>
               ) : (
                 <>
-                  <label htmlFor="roomAmenitiesEstimate">Room/Amenities Charge Estimate</label>
+                  {(eventType === 'business' || eventType === 'social') && (
+                    <label htmlFor="roomAmenitiesEstimate">Room/Amenities Charge Estimate</label>
+                  )}
                   <input
                     type="number"
                     id="roomAmenitiesEstimate"

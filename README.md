@@ -16,3 +16,6 @@ npm run preview
 ## Build 3
 - Removed "Lite" from title
 - Added label to room rate estimate input
+
+## Build 4
+- UI disappearing on room rate input should be fixed
