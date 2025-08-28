@@ -12,3 +12,7 @@ npm run preview
 - Build command: `npm ci && npm run build`
 - Publish directory: `dist`
 - Node version: 20 (or >=18)
+
+## Build 3
+- Removed "Lite" from title
+- Added label to room rate estimate input

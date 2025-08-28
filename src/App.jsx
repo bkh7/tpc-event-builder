@@ -97,6 +97,7 @@ export default function App(){
   const [bartenders, setBartenders] = useState(0);
 
   const [bizRoom, setBizRoom] = useState(0);
+  const [roomAmenitiesEstimate, setRoomAmenitiesEstimate] = useState(0);
 
   const cap = room === 'full' ? 800 : 275;
 
@@ -120,6 +121,7 @@ export default function App(){
   const cashFees = barMode==='cash' ? (200 + Math.max(0,(bartenders||autoBart)-1)*100) : 0;
 
   const roomRental = eventType==='wedding' ? (WEDDING_ROOM_RENTAL[slot]||0) : (bizRoom||0);
+  const roomAmenitiesSubtotal = eventType==='business' || eventType==='social' ? roomAmenitiesEstimate : 0;
 
   const isEvening = eventType==='wedding' && (slot==='friEvening' || slot==='satEvening');
   let minTarget=0, minShort=0; if(isEvening){
@@ -129,13 +131,18 @@ export default function App(){
     minShort = Math.max(0, minTarget - toward);
   }
 
-  const total = roomRental + foodSubtotal + service + foodTax + (barMode==='hosted' ? barBase + barTax : cashFees) + (minShort||0);
+  const total = roomRental + foodSubtotal + service + foodTax + (barMode==='hosted' ? barBase + barTax : cashFees) + roomAmenitiesSubtotal + (minShort||0);
+
+  function handleEstimateChange(e) {
+    const value = e.target.value;
+    setRoomAmenitiesEstimate(value);
+  }
 
   return (
     <div className="min-h-screen bg-white text-gray-900">
       <div className="max-w-5xl mx-auto p-4 md:p-6 space-y-6">
         <header className="space-y-1">
-          <h1 className="text-2xl md:text-3xl font-bold">Pinnacle Center - Event Builder (Lite)</h1>
+          <h1 className="text-2xl md:text-3xl font-bold">Pinnacle Center - Event Builder</h1>
           <p className="text-sm text-gray-600">Fast-loading estimator. For advanced options, use the full builder.</p>
         </header>
 
@@ -170,7 +177,16 @@ export default function App(){
                   <option value="sunAfternoonEvening">Sunday Aft/Eve</option>
                 </select>
               ) : (
-                <input type="number" className="border rounded p-2 w-full mt-2" min={0} placeholder="Room / amenities charge" value={bizRoom} onChange={(e)=>setBizRoom(+e.target.value||0)} />
+                <>
+                  <label htmlFor="roomAmenitiesEstimate">Room/Amenities Charge Estimate</label>
+                  <input
+                    type="number"
+                    id="roomAmenitiesEstimate"
+                    name="roomAmenitiesEstimate"
+                    value={roomAmenitiesEstimate}
+                    onChange={handleEstimateChange}
+                  />
+                </>
               )}
             </div>
           </div>
