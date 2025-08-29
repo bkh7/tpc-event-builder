@@ -19,3 +19,9 @@ npm run preview
 
 ## Build 4
 - UI disappearing on room rate input should be fixed
+
+## Build 5
+- Removed subheader
+- Updated header
+- Removed Business/Social Event Type
+- Removed 'Lite' tage from Bar Service header
