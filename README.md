@@ -1,17 +1,4 @@
-# Pinnacle Center – Event Builder (Lite)
-
-## Local
-```bash
-npm ci
-npm run dev
-npm run build
-npm run preview
-```
-
-## Deploy on Render (Static Site)
-- Build command: `npm ci && npm run build`
-- Publish directory: `dist`
-- Node version: 20 (or >=18)
+# Pinnacle Center – Event Builder 
 
 ## Build 3
 - Removed "Lite" from title
@@ -24,4 +11,9 @@ npm run preview
 - Removed subheader
 - Updated header
 - Removed Business/Social Event Type
-- Removed 'Lite' tage from Bar Service header
+- Removed 'Lite' tag from Bar Service header
+
+## Build 6
+- Reduced plated options to single, split, and combo options
+- Added disclaimer subheader
+- Added version tag

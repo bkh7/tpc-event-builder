@@ -11,13 +11,9 @@ const HOSTED_BAR_LEVELS = [
 ];
 
 const PLATED_ENTREES = [
-  { key: "tuscan", label: "Tuscan Chicken", price: 24.95 },
-  { key: "marsala", label: "Chicken Marsala", price: 23.95 },
-  { key: "sirloin", label: "Pinnacle Sirloin", price: 31.95 },
-  { key: "primeRib10", label: "Roasted Prime Rib 10oz", price: 37.95 },
-  { key: "tenderloin", label: "Tenderloin Filet", price: 42.95 },
-  { key: "sunDriedTomatoSalmon", label: "Creamy Sundried Tomato Salmon", price: 24.95 },
-  { key: "veganPotRoast", label: "Vegan Pot Roast (VG)", price: 22.95 },
+  { key: "tuscan", label: "Single", price: 24.95 },
+  { key: "marsala", label: "Split", price: 28.95 },
+  { key: "sirloin", label: "Combo", price: 32.95 },
 ];
 
 const BUFFET_OPTIONS = [
@@ -146,6 +142,9 @@ export default function App(){
       <div className="max-w-5xl mx-auto p-4 md:p-6 space-y-6">
         <header className="space-y-1">
           <h1 className="text-2xl md:text-3xl font-bold">The Pinnacle Center - Event Builder</h1>
+          <h3 style={{ color: '#b22222', marginTop: '0.5em', fontWeight: 'normal' }}>
+            Disclaimer: This event builder is for estimate and budgeting purposes only. The final price may vary depending on final selections.
+          </h3>
         </header>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -329,6 +328,19 @@ export default function App(){
           </div>
         </div>
       </div>
+      <div
+  style={{
+    position: 'fixed',
+    bottom: '10px',
+    right: '16px',
+    fontSize: '0.85em',
+    color: '#888',
+    zIndex: 1000,
+    pointerEvents: 'none'
+  }}
+>
+  Beta Build 6
+</div>
     </div>
   );
 }
